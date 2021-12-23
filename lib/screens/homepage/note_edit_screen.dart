@@ -449,6 +449,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
 
                               setState(() {
                                 _visibility = false;
+                                Navigator.of(context).pop();
                               });
                             } else {
                               toast('Seluruh kolom harus terisi');

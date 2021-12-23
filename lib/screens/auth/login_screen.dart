@@ -139,15 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Atau Masuk dengan?',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+
                     SizedBox(
                       height: 16,
                     ),
@@ -165,6 +157,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
+                        Container(
+                          width: 150,
+                          height: 45,
+                          child: RaisedButton(
+                            onPressed: () {
+                              Route route = MaterialPageRoute(
+                                  builder: (context) => RegisterScreen());
+                              Navigator.push(context, route);
+                            },
+                            color: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              'Pendaftaran',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
                         Container(
                           width: 140,
                           height: 45,
@@ -213,27 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 150,
-                          height: 45,
-                          child: RaisedButton(
-                            onPressed: () {
-                              Route route = MaterialPageRoute(
-                                  builder: (context) => RegisterScreen());
-                              Navigator.push(context, route);
-                            },
-                            color: Colors.orange,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text(
-                              'Pendaftaran',
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                        ),
+
                       ],
                     ),
                   ],

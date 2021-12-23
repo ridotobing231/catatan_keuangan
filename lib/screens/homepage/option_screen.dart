@@ -53,45 +53,6 @@ class _OptionScreenState extends State<OptionScreen> {
                 SizedBox(
                   height: 16,
                 ),
-
-                /// sinkron aplikasi
-                GestureDetector(
-                  onTap: () {
-                    toast('Data Telah Tersinkron');
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 16,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.sync,
-                          color: Colors.white,
-                          size: 40,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          'Sinkron Data',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: Divider(
-                    color: Colors.grey,
-                    thickness: 2,
-                  ),
-                ),
-
                 /// delete all data
                 GestureDetector(
                   onTap: () {
