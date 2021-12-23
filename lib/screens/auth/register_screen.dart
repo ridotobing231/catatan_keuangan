@@ -190,59 +190,82 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     SizedBox(
                       height: 16,
                     ),
-                    Center(
-                      child: Container(
-                        width: 170,
-                        height: 45,
-                        child: RaisedButton(
-                          onPressed: () async {
-                            /// CEK APAKAH NAMA, EMAIL, DAN PASSWORD SUDAH TERISI DENGAN FORMAT YANG BENAR
-                            if (_formKey.currentState!.validate()) {
-                              setState(() {
-                                _visible = true;
-                              });
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 170,
+                          height: 45,
+                          child: RaisedButton(
+                            onPressed: () async {
+                              Navigator.of(context).pop();
+                            },
+                            color: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              'Kembali',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 170,
+                          height: 45,
+                          child: RaisedButton(
+                            onPressed: () async {
+                              /// CEK APAKAH NAMA, EMAIL, DAN PASSWORD SUDAH TERISI DENGAN FORMAT YANG BENAR
+                              if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  _visible = true;
+                                });
 
-                              bool shouldNavigate =
-                                  await Authentication.registerHandler(
-                                _emailController.text,
-                                _passwordController.text,
-                              );
-
-                              if (shouldNavigate) {
-                                await Authentication.registeringUserToDatabase(
-                                  _nameController.text,
+                                bool shouldNavigate =
+                                await Authentication.registerHandler(
                                   _emailController.text,
                                   _passwordController.text,
                                 );
 
-                                setState(() {
-                                  _visible = false;
-                                  _formKey.currentState!.reset();
-                                  _showSuccessRegistration();
-                                  _emailController.clear();
-                                  _nameController.clear();
-                                  _passwordController.clear();
-                                });
-                              } else {
-                                setState(() {
-                                  _visible = false;
-                                });
-                                _showFailureRegistration();
+                                if (shouldNavigate) {
+                                  await Authentication.registeringUserToDatabase(
+                                    _nameController.text,
+                                    _emailController.text,
+                                    _passwordController.text,
+                                  );
+
+                                  setState(() {
+                                    _visible = false;
+                                    _formKey.currentState!.reset();
+                                    _showSuccessRegistration();
+                                    _emailController.clear();
+                                    _nameController.clear();
+                                    _passwordController.clear();
+                                  });
+
+                                } else {
+                                  setState(() {
+                                    _visible = false;
+                                  });
+                                  _showFailureRegistration();
+                                }
                               }
-                            }
-                          },
-                          color: Colors.orange,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'Pendaftaran',
-                            style: TextStyle(
-                              fontSize: 18,
+                            },
+                            color: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              'Daftar',
+                              style: TextStyle(
+                                fontSize: 18,
+                              ),
                             ),
                           ),
-                        ),
-                      ),
+                        )
+                      ] ,
                     ),
                   ],
                 ),

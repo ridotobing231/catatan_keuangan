@@ -456,6 +456,7 @@ class _NoteAddScreenState extends State<NoteAddScreen> {
                                 _descriptionController.clear();
                                 _selectedCategory = null;
                                 _date = "Pilih Tanggal Catatan";
+                                Navigator.of(context).pop();
                               });
                             } else {
                               toast('Seluruh kolom harus terisi');
